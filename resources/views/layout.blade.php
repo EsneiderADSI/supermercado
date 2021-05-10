@@ -5,7 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link REL=StyleSheet href="{{asset('css/style.css')}}" type="text/css" media=screen>
+    <link REL=StyleSheet href="{{asset('css/jumm.css')}}" type="text/css" media=screen>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/2788787b36.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="{{asset('image/215846.png')}}" sizes="64x64">
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -33,29 +39,30 @@
                         Crear productos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="proveedores.php">Crear proveedor</a>
-                        <a class="dropdown-item" href="tipo_produc.php">Crear tipo de producto</a>
-                        <a class="dropdown-item" href="empresa.php">Crear empresa</a>
-                        <a class="dropdown-item" href="tax.php">Crear impuesto de un producto</a>
+                        <a class="dropdown-item" href="{{route ('provedores.create')}}">Crear proveedor</a>
+                        <a class="dropdown-item" href="{{route ('tipoproductos.create')}}">Crear tipo de producto</a>
+                        <a class="dropdown-item" href="{{route ('empresas.create')}}">Crear empresa</a>
+                        <a class="dropdown-item" href="{{route ('impuestos.create')}}">Crear impuesto de un producto</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="productos.php">Producto</a>
+                        <a class="dropdown-item" href="{{route ('productos.create')}}">Producto</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-    
     <div class="container mt-3">
         @section('stats')
+
+
 
         <div class="jumbotron">
             <h1 class="display-4">Bienvenido</h1>
             <p class="lead">
-                Curso de programacion orientada a servicios
+                Curso de programación orientada a servicios
             </p>
             <hr class="my-4" />
             <p>
-                Desarrollo de una aplicación para la gestion de ventas de un super mercado
+                Desarrollo de una aplicación para la gestión de ventas de un supermercado
             </p>
             <div class="card-panel teal grey lighten-5" style="width: 100%;">
                 @if ($message = Session::get('success'))
@@ -84,6 +91,7 @@
     <br>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('css/jummjs.js')}}"></script>
     @yield('scripts')
 </body>
 <footer class="site-footer">

@@ -24,7 +24,7 @@ class TipoproductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('TipoProducto.agregar');
     }
 
     /**
@@ -35,7 +35,16 @@ class TipoproductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nameProductType'         =>  'required',
+        ]);
+
+        $form_data = array(
+            'nameProductType'        =>   $request->nameProductType,
+        );
+
+        Tipoproducto::create($form_data);
+        return redirect('/')->with('success', 'Datos guardados correctamente.');
     }
 
     /**

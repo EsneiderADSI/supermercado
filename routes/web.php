@@ -27,3 +27,8 @@ Route::get('/', function () {
 
 Route::resource('roles', RolController::class)->names('roles');
 Route::resource('personas', PersonasController::class)->names('personas');
+Route::resource('provedores', ProvedorController::class)->names('provedores');
+Route::resource('tipoproductos', TipoproductoController::class)->names('tipoproductos');
+Route::resource('empresas', EmpresasController::class)->names('empresas');
+Route::resource('impuestos', ImpuestosController::class)->names('impuestos');
+Route::resource('productos', ProductosController::class)->names('productos');

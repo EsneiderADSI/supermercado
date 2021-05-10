@@ -24,7 +24,7 @@ class ProvedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Provedor.agregar');
     }
 
     /**
@@ -35,7 +35,18 @@ class ProvedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'phoneNumber'         =>  'required',
+            'providerName'         =>  'required',
+        ]);
+
+        $form_data = array(
+            'phoneNumber'        =>   $request->phoneNumber,
+            'providerName'        =>   $request->providerName,
+        );
+
+        Provedor::create($form_data);
+        return redirect('/')->with('success', 'Datos guardados correctamente.');
     }
 
     /**

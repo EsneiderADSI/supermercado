@@ -24,7 +24,7 @@ class EmpresasController extends Controller
      */
     public function create()
     {
-        //
+        return view('Empresas.agregar');
     }
 
     /**
@@ -35,7 +35,20 @@ class EmpresasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'enterpriseName'         =>  'required',
+            'address'                =>  'required',
+            'phoneNumber'            =>  'required',
+        ]);
+
+        $form_data = array(
+            'enterpriseName'        =>   $request->enterpriseName,
+            'address'               =>   $request->address,
+            'phoneNumber'           =>   $request->phoneNumber,
+        );
+
+        Empresas::create($form_data);
+        return redirect('/')->with('success', 'Datos guardados correctamente.');
     }
 
     /**

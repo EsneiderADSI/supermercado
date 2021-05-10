@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Productos;
+use App\Provedor;
+use App\Empresas;
+use App\Tipoproducto;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -24,7 +27,10 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        $provedores = Provedor::all();
+        $empresas = Empresas::all();
+        $tiposp = Tipoproducto::all();
+        return view('Productos.agregar', compact('empresas', 'provedores', 'tiposp'));
     }
 
     /**
@@ -35,7 +41,24 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nameProduct'                       =>  'required',
+            'productState'                      =>  'required',
+            'provider_idProvider'               =>  'required',
+            'enterprise_idEnterprise'           =>  'required',
+            'productType_idproductType'         =>  'required',
+        ]);
+
+        $form_data = array(
+            'nameProduct'                     =>   $request->nameProduct,
+            'productState'                    =>   $request->productState,
+            'provider_idProvider'             =>   $request->provider_idProvider,
+            'enterprise_idEnterprise'         =>   $request->enterprise_idEnterprise,
+            'productType_idproductType'       =>   $request->productType_idproductType,
+        );
+
+        Productos::create($form_data);
+        return redirect('/')->with('success', 'Datos guardados correctamente.');
     }
 
     /**

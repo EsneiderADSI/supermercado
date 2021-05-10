@@ -24,7 +24,7 @@ class ImpuestosController extends Controller
      */
     public function create()
     {
-        //
+        return view('Impuestos.agregar');
     }
 
     /**
@@ -35,7 +35,16 @@ class ImpuestosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'taxName'         =>  'required',
+        ]);
+
+        $form_data = array(
+            'taxName'        =>   $request->taxName,
+        );
+
+        Impuestos::create($form_data);
+        return redirect('/')->with('success', 'Datos guardados correctamente.');
     }
 
     /**
